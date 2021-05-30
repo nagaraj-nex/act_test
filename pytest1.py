@@ -2,24 +2,12 @@ import os
 from pybfe.client.session import Session
 from intentionet.bfe.proto import api_gateway_pb2 as api
 
-def create_session():
-    os.environ['BFE_SSL_CERT'] = "nexbfe.crt"
-    BFE_HOST = "batfish.nexariacloud.com"
-    BFE_PORT = 443
-    bf = Session(host=BFE_HOST, port=BFE_PORT)
-    return bf
+os.environ['BFE_SSL_CERT'] = "nexbfe.crt"
+BFE_HOST = "batfish.nexariacloud.com"
+BFE_PORT = 443
+bf = Session(host=BFE_HOST, port=BFE_PORT)
 
-def clear_all(bf):
-    '''Deletes all networks except the default'''
-    networks = bf.list_networks()
-    for network in networks:
-        if network.startswith("Example"):
-            #print(network)
-            bf.set_network(network)
-        else:
-            bf.delete_network(network)
-
-os.environ['BFE_SSL_CERT'] = "../projects/pybfe-guide/nexbfe.crt"
+os.environ['BFE_SSL_CERT'] = "nexbfe.crt"
 BFE_HOST = "batfish.nexariacloud.com"
 BFE_PORT = 443
 bf = Session(host=BFE_HOST, port=BFE_PORT)
