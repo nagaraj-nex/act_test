@@ -19,13 +19,15 @@ def clear_all(bf):
         else:
             bf.delete_network(network)
 
+os.environ['BFE_SSL_CERT'] = "../projects/pybfe-guide/nexbfe.crt"
+BFE_HOST = "batfish.nexariacloud.com"
+BFE_PORT = 443
+bf = Session(host=BFE_HOST, port=BFE_PORT)
 
 REF_SNAPSHOT = ''
 NEW_SNAPSHOT = ''
 NETWORK_NAME="bgp_test_lab"
-bf = create_session()
 bf.set_network(NETWORK_NAME)
-print(bf.list_networks())
 
 snapshots = bf.list_snapshots()
 #case when tere are just 2 snapshots, where reference snapshot is called baseline and is manually uploaded
