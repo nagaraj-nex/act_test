@@ -7,11 +7,6 @@ BFE_HOST = "batfish.nexariacloud.com"
 BFE_PORT = 443
 bf = Session(host=BFE_HOST, port=BFE_PORT)
 
-os.environ['BFE_SSL_CERT'] = "nexbfe.crt"
-BFE_HOST = "batfish.nexariacloud.com"
-BFE_PORT = 443
-bf = Session(host=BFE_HOST, port=BFE_PORT)
-
 REF_SNAPSHOT = ''
 NEW_SNAPSHOT = ''
 NETWORK_NAME="bgp_test_lab"
@@ -24,6 +19,12 @@ if len(snapshots) == 2:
         if snapshot.startswith('baseline'):
             REF_SNAPSHOT = snapshot
         else: NEW_SNAPSHOT = snapshot
+else:
+    for snapshot in snapshots:
+        if snapshot.startswith('baseline'):
+            REF_SNAPSHOT = snapshot
+            break
+    NEW_SNAPSHOT = snapshots[0]            
 
 def get_compare_metadata_results(bf: Session, snapshot_name: str, reference_snapshot_name: str):
     """
