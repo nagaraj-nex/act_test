@@ -19,4 +19,4 @@ jobs:
 
       - name: execute python script
         run: |
-          $GITHUB_WORKSPACE/pytest1.py
+          python $GITHUB_WORKSPACE/pytest1.py
