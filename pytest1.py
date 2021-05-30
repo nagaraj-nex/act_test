@@ -40,7 +40,6 @@ if len(snapshots) == 2:
 def get_compare_metadata_results(bf: Session, snapshot_name: str, reference_snapshot_name: str):
     """
     Gets snapshot comparison results.
-    
     Returns a map from comparison type to either a count of changes or whether that type has changed.
     """
     resp = bf._api_gw.GetSnapshotComparisonMetadata(
