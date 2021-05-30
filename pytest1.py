@@ -3,7 +3,7 @@ from pybfe.client.session import Session
 from intentionet.bfe.proto import api_gateway_pb2 as api
 
 def create_session():
-    os.environ['BFE_SSL_CERT'] = "../projects/pybfe-guide/nexbfe.crt"
+    os.environ['BFE_SSL_CERT'] = "nexbfe.crt"
     BFE_HOST = "batfish.nexariacloud.com"
     BFE_PORT = 443
     bf = Session(host=BFE_HOST, port=BFE_PORT)
